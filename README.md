@@ -13,3 +13,10 @@ project's dependencies.
 ## Testing
 
 You can run the tests for the application with `vendor/bin/phpunit tests/`.
+
+If you'd like to watch the project files and rerun the tests when files are
+changed, you can run:
+
+```bash
+fswatch -o src/*.php tests/*.php | xargs -n1 -I{} vendor/bin/phpunit tests/ --bootstrap vendor/autoload.php
+```
