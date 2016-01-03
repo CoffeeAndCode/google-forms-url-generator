@@ -2,6 +2,7 @@
 
 > Generate URLs for Google Forms that are prepopulated and ready to submit.
 
+![ci status](https://codeship.com/projects/5bf8c240-9476-0133-e054-5ac7a66550a9/status?branch=master)
 
 ## Getting Started
 
