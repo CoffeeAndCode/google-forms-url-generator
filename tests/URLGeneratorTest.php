@@ -73,6 +73,16 @@ class URLGeneratorPrefilledURLTests extends \PHPUnit_Framework_TestCase
         $generator = new URLGenerator($this->exampleURL);
         $this->assertEquals($this->exampleURL . '/viewform?entry.123456=Option+1&entry.123456=Option+2', $generator->prefilledURL($params));
     }
+
+    public function testPrefilledURLWithMultipleParamsWithSpecialCharacters()
+    {
+        $params = array(
+            '11111' => '~!@#$%^&*()_+`-={}|[]\:";\'<>?,./',
+            '22222' => '~!@#$%^&*()_+`-={}|[]\:";\'<>?,./'
+        );
+        $generator = new URLGenerator($this->exampleURL);
+        $this->assertEquals($this->exampleURL . '/viewform?entry.11111=~!@%23$%25%5E%26*()_%2B%60-%3D%7B%7D%7C%5B%5D%5C:%22;\'%3C%3E?,./&entry.22222=~!@%23$%25%5E%26*()_%2B%60-%3D%7B%7D%7C%5B%5D%5C:%22;\'%3C%3E?,./', $generator->prefilledURL($params));
+    }
 }
 
 class URLGeneratorSubmissionURLTests extends \PHPUnit_Framework_TestCase
@@ -120,5 +130,15 @@ class URLGeneratorSubmissionURLTests extends \PHPUnit_Framework_TestCase
         );
         $generator = new URLGenerator($this->exampleURL);
         $this->assertEquals($this->exampleURL . '/formResponse?ifq&entry.123456=Option+1&entry.123456=Option+2&submit=Submit', $generator->submissionURL($params));
+    }
+
+    public function testSubmissionURLWithMultipleParamsWithSpecialCharacters()
+    {
+        $params = array(
+            '11111' => '~!@#$%^&*()_+`-={}|[]\:";\'<>?,./',
+            '22222' => '~!@#$%^&*()_+`-={}|[]\:";\'<>?,./'
+        );
+        $generator = new URLGenerator($this->exampleURL);
+        $this->assertEquals($this->exampleURL . '/formResponse?ifq&entry.11111=~!@%23$%25%5E%26*()_%2B%60-%3D%7B%7D%7C%5B%5D%5C:%22;\'%3C%3E?,./&entry.22222=~!@%23$%25%5E%26*()_%2B%60-%3D%7B%7D%7C%5B%5D%5C:%22;\'%3C%3E?,./&submit=Submit', $generator->submissionURL($params));
     }
 }
