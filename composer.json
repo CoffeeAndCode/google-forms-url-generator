@@ -1,4 +1,5 @@
 {
+  "name": "coffeeandcode/google-forms-url-generator",
   "autoload": {
     "psr-4": {
       "GoogleFormsURLGenerator\\": "src/"
