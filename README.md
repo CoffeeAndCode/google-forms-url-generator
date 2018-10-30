@@ -2,8 +2,6 @@
 
 > Generate URLs for Google Forms that are prepopulated and ready to submit.
 
-![ci status](https://codeship.com/projects/5bf8c240-9476-0133-e054-5ac7a66550a9/status?branch=master)
-
 ## Getting Started
 
 The file `src/URLGenerator.php` includes all of the logic needed to build a
@@ -124,4 +122,25 @@ then run:
 
 ```bash
 watchman-make -p 'src/**/*.php' 'tests/**/*.php' --make=vendor/bin/phpunit -t tests
+```
+
+## CI Server
+
+This project used to run on CodeShip with the following config and was not migrated to anything else:
+
+### Setup
+
+```
+# Set php version through phpenv. 5.3, 5.4, 5.5 & 5.6 available
+phpenv local 5.6
+# Install extensions through Pecl
+# yes yes | pecl install memcache
+# Install dependencies through Composer
+composer install --prefer-source --no-interaction
+```
+
+### Test Pipelines
+
+```
+vendor/bin/phpunit tests/
 ```
